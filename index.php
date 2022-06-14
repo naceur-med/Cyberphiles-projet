@@ -10,7 +10,7 @@ if (isset($_POST['envoyer le message'])) {
     $numero = $_POST['numero'];
     $message = $_POST['message'];
 
-    $sql = ("INSERT INTO client(nom, email, numero, message) VALUES (:nom, :email, :numero, :message)");
+    $sql = ("INSERT INTO client('nom', 'email', 'numero', 'message') VALUES (?, ?, ?, ?)");
     $stmt = $conn->prepare($sql);
 
     $stmt->bindParam(':nom', $nom);
@@ -41,10 +41,21 @@ if (isset($_POST['envoyer le message'])) {
 </head>
 
 <body id="page-top">
-
+    <div class="mainloader">
+        <div class="spinner">
+            <span>L</span>
+            <span>O</span>
+            <span>A</span>
+            <span>D</span>
+            <span>I</span>
+            <span>N</span>
+            <span>G</span>
+        </div>
+    </div>
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars ms-1"></i>
             </button>
@@ -119,7 +130,8 @@ if (isset($_POST['envoyer le message'])) {
             </div>
             <ul class="timeline">
                 <li>
-                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/1.jpg" alt="..." /></div>
+                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/1.jpg"
+                            alt="..." /></div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
                             <h4>Étape 1</h4>
@@ -131,7 +143,8 @@ if (isset($_POST['envoyer le message'])) {
                     </div>
                 </li>
                 <li class="timeline-inverted">
-                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/2.jpg" alt="..." /></div>
+                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/2.jpg"
+                            alt="..." /></div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
                             <h4>Etape 2</h4>
@@ -143,7 +156,8 @@ if (isset($_POST['envoyer le message'])) {
                     </div>
                 </li>
                 <li>
-                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/3.jpg" alt="..." /></div>
+                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/3.jpg"
+                            alt="..." /></div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
                             <h4>Etape 3</h4>
@@ -155,7 +169,8 @@ if (isset($_POST['envoyer le message'])) {
                     </div>
                 </li>
                 <li class="timeline-inverted">
-                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/4.jpg" alt="..." /></div>
+                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/4.jpg"
+                            alt="..." /></div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
                             <h4>Etape 4</h4>
@@ -194,18 +209,21 @@ if (isset($_POST['envoyer le message'])) {
                     <div class="col-md-6">
                         <div class="form-group">
                             <!-- Name input-->
-                            <input class="form-control" id="name" type="text" placeholder="Votre Nom *" data-sb-validations="required" />
+                            <input class="form-control" id="name" type="text" placeholder="Votre Nom *"
+                                data-sb-validations="required" />
                             <div class="invalid-feedback" data-sb-feedback="name:required">Un nom est requis.</div>
                         </div>
                         <div class="form-group">
                             <!-- Email address input-->
-                            <input class="form-control" id="email" type="email" placeholder="Votre Email *" data-sb-validations="required,email" />
+                            <input class="form-control" id="email" type="email" placeholder="Votre Email *"
+                                data-sb-validations="required,email" />
                             <div class="invalid-feedback" data-sb-feedback="email:required">Un Email est requis.</div>
                             <div class="invalid-feedback" data-sb-feedback="email:email">L'email n'est pas valide.</div>
                         </div>
                         <div class="form-group mb-md-0">
                             <!-- Phone number input-->
-                            <input class="form-control" id="phone" type="tel" placeholder="Votre Numéro *" data-sb-validations="required" />
+                            <input class="form-control" id="phone" type="tel" placeholder="Votre Numéro *"
+                                data-sb-validations="required" />
                             <div class="invalid-feedback" data-sb-feedback="phone:required">Un numéro est requis.
                             </div>
                         </div>
@@ -213,7 +231,8 @@ if (isset($_POST['envoyer le message'])) {
                     <div class="col-md-6">
                         <div class="form-group form-group-textarea mb-md-0">
                             <!-- Message input-->
-                            <textarea class="form-control" id="message" placeholder="Votre Message *" data-sb-validations="required"></textarea>
+                            <textarea class="form-control" id="message" placeholder="Votre Message *"
+                                data-sb-validations="required"></textarea>
                             <div class="invalid-feedback" data-sb-feedback="message:required">Un message est requis.
                             </div>
                         </div>
@@ -231,7 +250,8 @@ if (isset($_POST['envoyer le message'])) {
                     <div class="text-center text-danger mb-3">Erreur lors de l'envoi du message!</div>
                 </div>
                 <!-- Submit Button-->
-                <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled" id="submitButton" type="submit">Envoyer le message</button></div>
+                <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled"
+                        id="submitButton" type="submit">Envoyer le message</button></div>
             </form>
         </div>
     </section>
@@ -241,9 +261,12 @@ if (isset($_POST['envoyer le message'])) {
             <div class="row align-items-center">
                 <div class="col-lg-4 text-lg-start">Copyright &copy; CyberPhiles 2022</div>
                 <div class="col-lg-4 my-3 my-lg-0">
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i
+                            class="fab fa-twitter"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i
+                            class="fab fa-linkedin-in"></i></a>
                 </div>
                 <div class="col-lg-4 text-lg-end">
                     <a class="link-dark text-decoration-none me-3" href="#!">Politique de confidentialité</a>

@@ -43,3 +43,18 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+
+var loader = document.querySelector('.mainloader');
+
+function loader_show() {
+    loader.style.opacity = '1';
+    loader.style.transition = 'opacity 1s ease-in-out';
+}
+function loader_hide() {
+    loader.style.opacity = '0';
+    loader.style.transition = 'opacity 1s ease-in-out';
+    loader.style.position = 'relative';
+}
+loader_show();
+setTimeout(loader_hide, 3000);
+
